@@ -1,0 +1,52 @@
+.slider {
+    position: relative;
+    overflow: hidden;
+    @include toRem(margin-top, 30);
+    @include toRem(padding-top, 20);
+    @include toRem(padding-bottom, 80);
+    .slides {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+
+        .slide {
+            z-index: 0;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+
+            &.active {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+
+.buttons {
+    display: flex;
+    position: absolute;
+    @include toRem(top, 20);
+    @include toRem(right, 30);
+
+    span {
+        @include toRem(text-indent, -2000);
+        background: $greyColor;
+        @include toRem(width, 7);
+        @include toRem(height, 7);
+        @include toRem(border-radius, 50);
+        cursor: pointer;
+        @include toRem(margin-right, 5);
+
+        &.active {
+            background: $black2Color;
+        }
+    }
+}

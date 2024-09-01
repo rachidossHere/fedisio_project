@@ -1,0 +1,26 @@
+// ==================================================
+// mixins
+// ==================================================
+	// prefix 
+	@mixin prefix($name, $value) {
+	  -webkit-#{$name}: $value;
+	  -moz-#{$name}: $value;
+	  -ms-#{$name}: $value;
+	  -o-#{$name}: $value;
+	  #{$name}: $value;
+	}
+
+	//border-radius 
+	// Usage:
+	//      => 
+			 // @include border-radius(5px);
+			 // @include border-radius(5px 10px);
+			 // @include border-radius(5px 10px 20px);
+			 // @include border-radius(5px 10px 20px 30px);
+	@mixin border-radius($val...) {
+	  @include prefix(border-radius, $val);
+	}
+
+	@mixin toRem($property, $value) {
+		#{$property}: (calc($value / 16)) + rem;
+	}

@@ -1,0 +1,207 @@
+.header {
+    display: flex;
+    height: 100vh;
+    @include respond-to(desktop) {
+        flex-direction: column;
+        height: auto;
+    }
+    &__leftSide {
+        width: 60%;
+        background-color: $mainColor;
+        padding: 30px 0 30px 60px;
+        display: flex;
+        flex-direction: column;
+        @include respond-to(desktop) {
+            width: 100%;
+            position: relative;
+            height: 80vh;
+            padding: 30px;
+        }
+    }
+
+    &__content {
+        @extend .roboto-medium;
+        @include toRem(font-size, 55);
+        color: $whiteColor;
+        margin-top: auto;
+        @include toRem(line-height, 55);
+        width: 70%;
+        position: relative;
+        &::after{
+            content: "";
+            position: absolute;
+            top: -140px;
+            left: -80px;
+            background: $blueColor;
+            @include toRem(height, 64);
+            @include toRem(width, 400);
+            @include toRem(border-radius, 50);
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            top: -300px;
+            left: 40%;
+            background: $blue3Color;
+            @include toRem(height, 37);
+            @include toRem(width, 154);
+            @include toRem(border-radius, 50);
+        }
+        @include respond-to(desktop) {
+            margin: auto;
+            width: 100%;
+            text-align: center;
+            @include toRem(line-height, 65);
+            &:after,&:before{
+                display: none;
+            }
+        }
+        @include respond-to(tablet) {
+            @include toRem(font-size, 40);
+        }
+        @include respond-to(mobile-lg) {
+            @include toRem(font-size, 28);
+            @include toRem(line-height, 40);
+        }
+    }
+
+    &__rightSide {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        width: 40%;
+        background-color: $orangeColor;
+        padding: 30px 0;
+        overflow: hidden;
+        @include respond-to(desktop) {
+            width: 100%;
+        }
+        &--picture {
+            @extend .black-border;
+            border-bottom: none;
+            position: relative;
+            @include toRem(margin-left, 100);
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: -100%;
+                right: 0;
+                width: 200%;
+                height: 0.5px;
+                background: $blackColor;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                top: 0;
+                @include toRem(right, 29);
+                @include toRem(width, 0.5);
+                height: 100%;
+                background: $blackColor;
+            }
+        }
+
+        &--content {
+            position: relative;
+        }
+
+        &--arrow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @extend .black-border;
+            @include toRem(width, 160);
+            @include toRem(font-size, 48);
+            @include toRem(height, 470);
+
+            &:after {
+                content: "";
+                position: absolute;
+                @include toRem(bottom, 25);
+                right: 50%;
+                transform: translateX(50%) rotate(45deg);
+                @include toRem(width, 15);
+                @include toRem(height, 15);
+                border-right: 1px solid $blackColor;
+                border-top: 1px solid $blackColor;
+                cursor: pointer;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                @include toRem(bottom, 33);
+                @include toRem(width, 26);
+                @include toRem(height, 0.5);
+                right: 52%;
+                transform: translateX(50%);
+                background: $blackColor;
+            }
+        }
+
+        &--text {
+            display: flex;
+            flex-direction: row;
+            margin-right: 30px;
+
+            &--bottom {
+                @include toRem(padding-left, 40);
+                @include toRem(padding-right, 25);
+                @include toRem(padding-bottom, 25);
+                @include toRem(padding-top, 40);
+                @extend .black-border;
+                border-top: none;
+                align-self: flex-start;
+            }
+        }
+
+        &--rotate {
+            @include toRem(padding, 24);
+            span{
+                @extend .rotate-text;
+            }
+
+        }
+    }
+}
+
+.menu-burger {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid $greyColor;
+    border-radius: 50%;
+    padding-left: 6px;
+    padding-top: 15px;
+    cursor: pointer;
+    text-align: center;
+    z-index: 6;
+    span {
+        display: block;
+        width: 85%;
+        height: 2px;
+        background: $whiteColor;
+        margin-bottom: 5px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    &.active {
+        span {
+            background: $black2Color;
+            &:first-child {
+                transform: translateY(7px) rotate(45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:last-child {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+    }
+}

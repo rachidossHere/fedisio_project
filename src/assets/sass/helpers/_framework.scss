@@ -1,0 +1,152 @@
+.justify-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-orange {
+    color: $orange2Color;
+}
+
+.text-blue {
+    color: $mainColor;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mb0 {
+    margin-bottom: 0;
+}
+
+.mb5 {
+    @include toRem(margin-bottom, 5);
+}
+
+.mb10 {
+    @include toRem(margin-bottom, 10);
+}
+
+.mb20 {
+    @include toRem(margin-bottom, 20);
+}
+
+.mb30 {
+    @include toRem(margin-bottom, 30);
+}
+
+.mb40 {
+    @include toRem(margin-bottom, 40);
+}
+
+.mb50 {
+    @include toRem(margin-bottom, 50);
+}
+
+.mb60 {
+    @include toRem(margin-bottom, 60);
+}
+
+.mb70 {
+    @include toRem(margin-bottom, 70);
+}
+
+.mb80 {
+    @include toRem(margin-bottom, 80);
+}
+
+.mb90 {
+    @include toRem(margin-bottom, 90);
+}
+
+.mb100 {
+    @include toRem(margin-bottom, 100);
+}
+
+.font62 {
+    @include toRem(font-size, 62);
+    @include toRem(line-height, 67);
+}
+
+.font60 {
+    @include toRem(font-size, 60);
+    @include toRem(line-height, 65);
+}
+
+.font40 {
+    @include toRem(font-size, 40);
+    @include toRem(line-height, 25);
+}
+
+.font31 {
+    @include toRem(font-size, 31);
+    @include toRem(line-height, 43);
+}
+
+.font27 {
+    @include toRem(font-size, 27);
+    @include toRem(line-height, 33);
+}
+
+.font20 {
+    @include toRem(font-size, 20);
+    @include toRem(line-height, 25);
+}
+
+.font14 {
+    @include toRem(font-size, 14);
+    @include toRem(line-height, 23);
+}
+
+.font15 {
+    @include toRem(font-size, 15);
+    @include toRem(line-height, 25);
+}
+
+.font16 {
+    @include toRem(font-size, 16);
+    @include toRem(line-height, 25);
+}
+
+.align-self-end {
+    align-self: end;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.flex-column-mobile {
+    @include respond-to(tablet) {
+        flex-direction: column;
+    }
+}
+
+.mb50-mobile {
+    @include respond-to(tablet) {
+        @include toRem(margin-bottom, 50)
+    }
+}
+
+.font25-mobile {
+    @include respond-to(tablet) {
+        @include toRem(font-size, 25);
+        @include toRem(line-height, 30);
+    }
+}

@@ -1,0 +1,33 @@
+// ==================================================
+// Layout
+// ==================================================
+	*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html{
+        font-size: 100%;
+    }
+
+    body {
+        @include toRem(font-size, 16);
+        color: $blackColor;
+        overflow-x: hidden;
+        &.active {
+            overflow: hidden;
+            position: relative;
+            &:after{
+                content: "";
+                position: absolute;
+                background: $black2Color;
+                opacity: .5;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 4;
+            }
+        }
+    }

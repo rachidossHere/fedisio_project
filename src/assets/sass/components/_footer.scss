@@ -1,0 +1,131 @@
+.footer {
+    background: $greenColor;
+    padding: 160px 0 50px;
+    @include respond-to(tablet) {
+       padding-top: 60px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding-top: 60px;
+        margin-top: 60px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            background: url("./../img/icons/white-quote.png") no-repeat center center;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            @include toRem(width, 68);
+            @include toRem(height, 56);
+        }
+    }
+
+    &__desc {
+        max-width: 60%;
+        width: 100%;
+        text-align: center;
+        @include toRem(line-height, 40);
+        @include toRem(font-size, 50);
+        line-height: 65px;
+        margin-bottom: 40px;
+
+        @include respond-to(tablet) {
+            max-width: 100%;
+            @include toRem(font-size, 35);
+            line-height: 45px;
+        }
+        @include respond-to(mobile-lg) {
+            @include toRem(font-size, 30);
+            line-height: 36px;
+        }
+    }
+
+    &__title {
+        @include toRem(font-size, 33);
+        @include toRem(line-height, 50);
+
+        @include respond-to(tablet) {
+            @include toRem(font-size, 26);
+            line-height: 35px;
+            text-align: center;
+        }
+    }
+
+    &__link {
+        @extend .rotate-text;
+        transform: rotate(0) !important;
+        writing-mode: horizontal-tb !important;
+        text-orientation: mixed !important;
+        padding-right: 80px !important;
+        position: relative;
+        transition: transform 0.3s ease-in-out;
+        margin-bottom: 100px;
+        &:after {
+            content: "";
+            background: url("./../img/icons/arrow-right.png") no-repeat;
+            @include toRem(width, 28);
+            @include toRem(height, 28);
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        @include respond-to(tablet) {
+            font-size: 14px !important;
+            padding-right: 40px !important;
+            &:after{
+                background-size: 60%;
+                top: 17px;
+                right: 0px;
+            }
+        }
+        &:hover:after {
+            top: 10px;
+            animation: moveRight 0.8s infinite;
+        }
+    }
+
+    &__navigation {
+        ul {
+            display: flex;
+
+            li {
+                a {
+                    display: block;
+                    color: $blackColor;
+                    @extend .roboto-medium;
+                    @include toRem(font-size, 14);
+                    @include toRem(line-height, 39);
+                    @include toRem(margin-right, 20);
+                }
+
+                &:last-of-type {
+                    a {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

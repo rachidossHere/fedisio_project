@@ -1,0 +1,582 @@
+// ==================================================
+// Home page
+// ==================================================
+
+.section {
+    position: relative;
+
+    &--grey {
+        background: $grey3Color;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        width: 100%;
+        @include toRem(padding-bottom, 60);
+
+        &--border {
+            border-bottom: 1px solid $grey1Color;
+        }
+
+        &--space {
+            justify-content: space-between;
+            margin-right: 5%;
+            flex-direction: column;
+        }
+
+        &--no-padd {
+            padding-bottom: 0;
+        }
+
+        &__marques {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &__viewall {
+        display: flex;
+        justify-content: center;
+        @include toRem(margin-bottom, 110);
+    }
+
+    &__carriere {
+        @include toRem(padding-top, 90);
+    }
+
+    &__half {
+        &__item {
+            flex: 1;
+
+            .picture {
+                img {
+                    @include toRem(width, 113);
+                    @include toRem(height, 28);
+
+                }
+            }
+
+            nav {
+                display: flex;
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+
+                    li {
+                        a {
+                            display: block;
+                            @extend .roboto-medium;
+                            @include toRem(font-size, 15);
+                            @include toRem(line-height, 20);
+                            @include toRem(margin-bottom, 15);
+                            color: $blackColor;
+                            position: relative;
+                            transition: all .5s ease-in-out;
+                            @include respond-to(tablet) {
+                                text-align: center;
+                            }
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                width: 7px;
+                                height: 7px;
+                                background: $black2Color;
+                                border-radius: 50%;
+                                opacity: 0;
+                                left: 0;
+                                top: 7px;
+                                transition: all .5s ease-in-out;
+
+                            }
+
+                            &:hover {
+                                padding-left: 20px;
+
+                                &:after {
+                                    opacity: 1;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            &--width {
+                @include toRem(max-width, 500);
+                width: 100%;
+                @include respond-to(tablet) {
+                    max-width: 100%;
+                    @include toRem(margin-top, 50);
+                }
+            }
+        }
+    }
+
+    &__media, &__city {
+        @include respond-to(desktop) {
+            &__content {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
+        @include respond-to(tablet) {
+            .card--blue,.card {
+                max-width: 49%;
+            }
+            .card{
+                flex: auto;
+            }
+        }
+        @include respond-to(mobile-lg) {
+            .card--blue, .card {
+                max-width: 100%;
+            }
+            .card{
+                flex: auto;
+                &__title--small {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    &__publish{
+        @include respond-to(desktop) {
+            &__content {
+                flex-wrap: wrap;
+                .card {
+                    &:last-child {
+                        display: inline-flex;
+                        align-items: center;
+                    .card__picture {
+                            width: 270px;
+                        }
+                    }
+                }
+            }
+        }
+        @include respond-to(tablet) {
+            &__content {
+                gap: 15px;
+                .card {
+                    width: 49%;
+                    &:nth-child(2){
+                        margin-bottom: 10px;
+                    }
+                    .card__info {
+                        align-items: start;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        @include respond-to(mobile-lg) {
+            &__content {
+                
+                .card {
+                    .card__info {
+                        align-items: start;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &--blue {
+        background: $blueColor;
+        border-radius: 20px;
+        @include toRem(padding, 20);
+        flex: 1 1 calc(24% - 20px);
+        box-sizing: border-box;
+        max-width: calc(24% - 20px);
+        color: $whiteColor;
+        transition: all .5s ease;
+
+        @include respond-to(desktop) {
+            max-width: 100%;
+        }
+
+        &:hover {
+            box-shadow: 0 0 10px $black2Color;
+        }
+    }
+
+    &__picture {
+        margin-bottom: 15px;
+
+        img {
+            border-radius: 20px;
+        }
+
+        &--black {
+            background: $blackColor;
+            @include toRem(height, 204);
+            border-radius: 20px;
+            position: relative;
+
+            img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                @include toRem(width, 168);
+                @include toRem(height, 38);
+            }
+        }
+    }
+
+    &__title {
+        @extend .roboto-medium;
+        @include toRem(font-size, 27);
+        @include toRem(line-height, 33);
+        @include toRem(width, 330);
+        @include toRem(margin-bottom, 20);
+
+        &--small {
+            @include toRem(font-size, 20);
+            max-width: 95%;
+            @include toRem(margin-bottom, 40);
+        }
+
+        &--white {
+            color: $whiteColor;
+        }
+    }
+
+    &__description {
+        @extend .roboto-regular;
+        @include toRem(font-size, 15);
+        @include toRem(line-height, 20);
+        @include toRem(margin-bottom, 20);
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+
+        &--bottom {
+            margin-top: auto;
+        }
+
+        .audit {
+            color: $whiteColor;
+            background: $blue1Color;
+            @extend .roboto-regular;
+            @include toRem(font-size, 14);
+            @include toRem(line-height, 20);
+            @include toRem(border-radius, 20);
+            padding: 5px 10px;
+            text-align: center;
+            @include toRem(margin-right, 10);
+        }
+
+        .date {
+            @extend .roboto-light;
+            @include toRem(font-size, 13);
+            @include toRem(line-height, 20);
+            @include toRem(border-radius, 20);
+            font-style: italic;
+            @include toRem(margin-left, 10);
+        }
+    }
+
+    &__type {
+        display: block;
+        border-radius: 50%;
+        border: 1px solid #C4C4C4;
+        @include toRem(text-indent, -2000);
+        @include toRem(width, 45);
+        @include toRem(height, 45);
+        position: relative;
+        transition: all .3s ease-in-out;
+        background: $whiteColor;
+        @include toRem(margin-bottom, 20);
+
+        &:after {
+            content: "";
+            background: url("./../img/icons/search.png") no-repeat;
+            @include toRem(width, 27);
+            @include toRem(height, 27);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        &--audio {
+            &:after {
+                background: url("./../img/icons/microphone.png") no-repeat;
+            }
+        }
+
+        &--video {
+            &:after {
+                background: url("./../img/icons/play.png") no-repeat;
+                @include toRem(width, 19);
+                @include toRem(height, 19);
+            }
+        }
+
+    }
+
+    &--grey {
+        background: $grey3Color;
+    }
+
+    &--self {
+        align-self: flex-start;
+    }
+
+    &--radius {
+        border-radius: 20px;
+        padding: 30px 17px;
+    }
+
+    &--multiple {
+        flex: 2;
+    }
+}
+
+.rotate-text {
+    background: $whiteColor;
+    @extend .black-border;
+    border-radius: 50px;
+    padding: 10px;
+    writing-mode: vertical-rl;
+    text-align: center;
+    @extend .roboto-medium;
+    color: $blackColor;
+    @include toRem(line-height, 30);
+    @include toRem(font-size, 20);
+    transform: rotate(180deg);
+}
+
+.accordion {
+    color: $whiteColor;
+    width: 100%;
+    @include toRem(margin-top, 115);
+
+    &__item {
+        background-color: $mainColor;
+        border-radius: 10px;
+        background-image: url("./../img/mask.png");
+        background-repeat: no-repeat;
+        background-position: 80% center;
+        background-size: 35%;
+        margin-bottom: 0;
+
+        &--blue {
+            background: $blueColor;
+        }
+
+        &--orange {
+            background: $orangeColor;
+        }
+
+        &--second-orange {
+            background: $orange2Color;
+        }
+    }
+
+    &__content {
+        position: relative;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    &__header {
+        @extend .roboto-semibold;
+        @include toRem(font-size, 40);
+        @include toRem(line-height, 25);
+        @include toRem(margin-bottom, 80);
+        padding: 40px 40px 0 40px;
+
+        @include respond-to(tablet) {
+            @include toRem(font-size, 25);
+            @include toRem(line-height, 20);
+            @include toRem(margin-bottom, 40);
+        }
+    }
+
+    &__number {
+        @extend .roboto-medium;
+        @include toRem(font-size, 40);
+        @include toRem(line-height, 25);
+        @include toRem(padding, 25);
+        @include toRem(padding-left, 40);
+        display: block;
+        cursor: pointer;
+
+        @include respond-to(tablet) {
+            @include toRem(font-size, 25);
+            @include toRem(line-height, 20);
+        }
+    }
+
+    &__subtitle {
+        display: inline-block;
+        @extend .roboto-medium;
+        @include toRem(font-size, 27);
+        @include toRem(line-height, 33);
+        @include toRem(padding-bottom, 80);
+        @include toRem(padding-left, 40);
+
+        @include toRem(margin-bottom, 15);
+        position: relative;
+
+        @include respond-to(tablet) {
+            @include toRem(font-size, 16);
+            @include toRem(line-height, 20);
+            @include toRem(padding-bottom, 40);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 40px;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: $greyColor;
+            opacity: 0.5;
+        }
+    }
+
+    &__discription {
+        @extend .roboto-regular;
+        @include toRem(font-size, 16);
+        @include toRem(line-height, 23);
+        @include toRem(max-width, 420);
+        @include toRem(padding-left, 40);
+        width: 100%;
+        @include toRem(margin-bottom, 40);
+
+        @include respond-to(tablet) {
+            @include toRem(font-size, 14);
+            @include toRem(margin-bottom, 20);
+        }
+    }
+
+    &__btn {
+        display: inline-block;
+        position: absolute;
+        @include toRem(top, 20);
+        @include toRem(right, 20);
+        @include toRem(width, 40);
+        @include toRem(height, 40);
+        @include toRem(text-indent, -2000);
+        background: url("./../img/icons/btn_round.png") no-repeat;
+        background-size: 100%;
+    }
+}
+
+.link {
+    display: inline-block;
+    @extend .roboto-medium;
+    color: $blue2Color;
+    @include toRem(line-height, 30);
+    @include toRem(font-size, 16);
+}
+
+.section__flag {
+    background: $greenColor;
+    @include toRem(width, 100);
+    @include toRem(height, 330);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    right: -100%;
+    top: 25%;
+    position: fixed;
+    &.sticky {
+        right: 0;
+    }
+
+    span {
+        @extend .rotate-text;
+    }
+
+    @include respond-to(tablet) {
+        display: none;
+    }
+
+}
+
+.carriere {
+    &__content {
+        display: flex;
+        gap: 40px
+    }
+
+    &__item {
+        display: flex;
+        flex: 1;
+
+        &:nth-child(2) {
+            flex: 2;
+        }
+
+        &--small {
+            img {
+                @include toRem(height, 406);
+            }
+        }
+
+        &__colab {
+            background: $mainColor;
+            @include toRem(border-radius, 20);
+            padding: 20px 30px;
+            color: $whiteColor;
+            @include toRem(margin-bottom, 40);
+        }
+
+        &__citation {
+            position: relative;
+            @include toRem(padding-left, 80);
+
+            &:after {
+                content: "";
+                position: absolute;
+                background: $grey3Color;
+                @include toRem(width, 60);
+                @include toRem(height, 60);
+                @include toRem(border-radius, 10);
+                left: 0;
+                @include toRem(top, -15);
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                background: url("./../img/icons/quote.png") no-repeat;
+                @include toRem(width, 33);
+                @include toRem(height, 28);
+                @include toRem(bottom, -5);
+                @include toRem(left, 22);
+                background-size: 100%;
+                z-index: 1;
+            }
+        }
+
+        .main-btn {
+            margin: 0 auto;
+            margin-top: auto;
+            margin-bottom: 10px;
+        }
+    }
+}

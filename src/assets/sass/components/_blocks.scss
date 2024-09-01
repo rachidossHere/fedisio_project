@@ -1,0 +1,170 @@
+// ==================================================
+// block
+// ==================================================
+
+.main-title {
+    @extend .roboto-regular;
+    @include toRem(font-size, 48);
+    @include toRem(line-height, 60);
+    @include toRem(padding-bottom, 35);
+
+    strong {
+        display: block;
+        @extend .roboto-regular;
+        @include toRem(font-size, 48);
+        @include toRem(padding-left, 80);
+    }
+}
+
+.sub-title {
+    color: $blackColor;
+    @extend .roboto-regular;
+    @include toRem(font-size, 18);
+    @include toRem(line-height, 22);
+
+    span {
+        display: block;
+        font-style: italic;
+        @extend .roboto-medium;
+    }
+}
+
+.b-radius {
+    border-radius: 50px;
+    background-color: $blueColor;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.main {
+    @include toRem(max-width, 1400);
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    @include respond-to(desktop) {
+        @include toRem(padding-inline, 30);
+    }
+}
+
+.section__title {
+    display: inline-block;
+    @extend .roboto-medium;
+    @include toRem(font-size, 16);
+    @include toRem(line-height, 20);
+    color: $blue2Color;
+    position: relative;
+    @include toRem(padding-left, 35);
+    @include toRem(margin-bottom, 40);
+
+    &:after,
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        border-radius: 20px;
+        background: $blue2Color;
+        height: 3px;
+    }
+
+    &:after {
+        bottom: 5px;
+        width: 20px;
+    }
+
+    &:before {
+        bottom: 10px;
+        width: 7px;
+    }
+}
+
+.icon {
+
+    &:before {
+        content: "";
+        position: absolute;
+        @include toRem(top, -10);
+        @include toRem(right, -50);
+        @include toRem(width, 30);
+        @include toRem(height, 30);
+        @include toRem(text-indent, -2000);
+        background: url("./../img/icons/btn_round.png") no-repeat;
+        background-size: 100%;
+        border: 1px solid $greyColor;
+        border-radius: 50%;
+    }
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+.main-btn {
+    display: inline-block;
+    border-radius: 50px;
+    @extend .roboto-regular;
+    padding: 12px 55px 12px 20px;
+    transition: all .3s ease-in-out;
+    border: 1px solid $black2Color;
+    position: relative;
+    background: $black2Color;
+    color: $whiteColor;
+
+    &:after {
+        content: "";
+        background: url("./../img/icons/arrow-white.png") no-repeat;
+        @include toRem(width, 18);
+        @include toRem(height, 17);
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    &:hover {
+        box-shadow: 0 0 20px $black2Color;
+    }
+}
+
+.color-black {
+    color: $blackColor;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+
+    &__input {
+        @include toRem(max-width, 400);
+        width: 100%;
+        @include respond-to(tablet) {
+            max-width: 80%;
+            @include toRem(margin-bottom, 30);
+        }
+        input {
+            border: none;
+            border-bottom: 1px solid $grey1Color;
+        }
+
+    }
+
+    &__btn {
+        position: relative;
+        @extend .icon;
+        cursor: pointer;
+        @include toRem(text-indent, -2000);
+        &:before{
+            top: 0;
+            transform: rotate(45deg);
+            @include respond-to(tablet) {
+                
+                @include toRem(top, -15);
+            }
+        }
+    }
+}
