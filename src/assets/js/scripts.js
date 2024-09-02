@@ -1,24 +1,15 @@
+// Main initialization function
 document.addEventListener('DOMContentLoaded', function () {
-    // Accordion functionality
     initAccordion();
-
-    // Slideshow functionality
     initSlideshow();
-
-    // Sticky menu
     initStickyMenu('navbar');
-
-    // Sticky section flag
     initStickyFlag('.section__flag');
-
-    // Sticky navbar with offset
     initStickyNavbarWithOffset('main-navbar', 200);
-
-    // Responsive menu burger creation
     handleResponsiveMenuBurger(1024);
+    initMarquesSlider();
 });
 
-// Initialize Accordion
+// Accordion functionality
 function initAccordion() {
     const accordionHeaders = document.querySelectorAll('.accordion__number');
 
@@ -34,27 +25,23 @@ function initAccordion() {
 function openFirstAccordionItem(headers) {
     const firstHeader = headers[0];
     const firstContent = firstHeader.parentElement.querySelector('.accordion__content');
-    firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+    firstContent.style.maxHeight = `${firstContent.scrollHeight}px`;
 }
 
 function toggleAccordionItem() {
     const accordionItem = this.parentElement;
     const accordionContent = accordionItem.querySelector('.accordion__content');
-
+    
     document.querySelectorAll('.accordion__content').forEach(content => {
         if (content !== accordionContent) {
             content.style.maxHeight = null;
         }
     });
 
-    if (accordionContent.style.maxHeight) {
-        accordionContent.style.maxHeight = null;
-    } else {
-        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    }
+    accordionContent.style.maxHeight = accordionContent.style.maxHeight ? null : `${accordionContent.scrollHeight}px`;
 }
 
-// Initialize Slideshow
+// Slideshow functionality
 function initSlideshow() {
     const slides = document.querySelectorAll('.slide');
     const buttons = document.querySelectorAll('.buttons span');
@@ -62,12 +49,8 @@ function initSlideshow() {
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            buttons[i].classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-                buttons[i].classList.add('active');
-            }
+            slide.classList.toggle('active', i === index);
+            buttons[i].classList.toggle('active', i === index);
         });
     }
 
@@ -88,49 +71,37 @@ function initSlideshow() {
     showSlide(currentIndex);
 }
 
-// Initialize Sticky Menu
+// Sticky Menu functionality
 function initStickyMenu(navbarId) {
     const navbar = document.getElementById(navbarId);
     const sticky = navbar.offsetTop;
 
-    window.onscroll = function () {
-        if (window.scrollY >= sticky) {
-            navbar.classList.add('sticky');
-        } else {
-            navbar.classList.remove('sticky');
-        }
-    };
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('sticky', window.scrollY >= sticky);
+    });
 }
 
-// Initialize Sticky Flag
+// Sticky Flag functionality
 function initStickyFlag(selector) {
     const flag = document.querySelector(selector);
     const stickyOffset = flag.offsetTop;
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > stickyOffset) {
-            flag.classList.add('sticky');
-        } else {
-            flag.classList.remove('sticky');
-        }
+        flag.classList.toggle('sticky', window.scrollY > stickyOffset);
     });
 }
 
-// Initialize Sticky Navbar with Offset
+// Sticky Navbar with Offset functionality
 function initStickyNavbarWithOffset(navbarId, offset) {
     const navbar = document.getElementById(navbarId);
     const stickyOffset = navbar.offsetTop;
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > stickyOffset + offset) {
-            navbar.classList.add('sticky');
-        } else {
-            navbar.classList.remove('sticky');
-        }
+        navbar.classList.toggle('sticky', window.scrollY > stickyOffset + offset);
     });
 }
 
-// Handle Responsive Menu Burger
+// Responsive Menu Burger functionality
 function handleResponsiveMenuBurger(breakpoint) {
     function appendDivIfNeeded() {
         const header = document.querySelector('.header__leftSide');
@@ -150,12 +121,10 @@ function handleResponsiveMenuBurger(breakpoint) {
     function createMenuBurger() {
         const newDiv = document.createElement('div');
         newDiv.className = 'menu-burger';
-
         for (let i = 1; i <= 3; i++) {
             const span = document.createElement('span');
             newDiv.appendChild(span);
         }
-
         return newDiv;
     }
 
@@ -167,4 +136,34 @@ function handleResponsiveMenuBurger(breakpoint) {
 
     appendDivIfNeeded();
     window.addEventListener('resize', appendDivIfNeeded);
+}
+
+// Marques Slider functionality
+function initMarquesSlider() {
+    const marqueContent = document.querySelector('.section__marques__content');
+    const marqueItems = document.querySelectorAll('.section__marques__item');
+    const itemsToShow = 6;
+    let currentIndex = 0;
+    const itemWidth = marqueItems[0].offsetWidth;
+
+    function getTotalWidth() {
+        return itemWidth * marqueItems.length;
+    }
+
+    function showSlide(index) {
+        const totalWidth = getTotalWidth();
+        const maxIndex = Math.ceil(marqueItems.length / itemsToShow) - 1;
+        marqueContent.style.transform = `translateX(-${Math.min(index, maxIndex) * itemWidth * itemsToShow}px)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % Math.ceil(marqueItems.length / itemsToShow);
+        showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 3000);
+
+    window.addEventListener('resize', () => {
+        showSlide(currentIndex);
+    });
 }

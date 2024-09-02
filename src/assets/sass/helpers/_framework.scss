@@ -150,3 +150,9 @@
         @include toRem(line-height, 30);
     }
 }
+
+.flex-column-mobile {
+    @include respond-to(tablet) {
+        flex-direction: column;
+    } 
+}

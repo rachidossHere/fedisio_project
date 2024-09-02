@@ -22,6 +22,9 @@
     @include toRem(font-size, 18);
     @include toRem(line-height, 22);
 
+    @include respond-to(desktop) {
+        @include toRem(padding-bottom, 25);
+    }
     span {
         display: block;
         font-style: italic;
@@ -166,5 +169,12 @@ img {
                 @include toRem(top, -15);
             }
         }
+    }
+}
+
+.show-mobile {
+    display: none;
+    @include respond-to(tablet) {
+        display: block;
     }
 }

@@ -76,6 +76,9 @@
         @include respond-to(desktop) {
             width: 100%;
         }
+        @include respond-to(tablet) {
+            display: none;
+        }
         &--picture {
             @extend .black-border;
             border-bottom: none;
@@ -117,6 +120,9 @@
             @include toRem(font-size, 48);
             @include toRem(height, 470);
 
+            @include respond-to(desktop) {
+                @include toRem(height, 550);
+            }
             &:after {
                 content: "";
                 position: absolute;
