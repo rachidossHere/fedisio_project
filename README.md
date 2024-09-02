@@ -69,4 +69,3 @@ fedisio_project/
 ├── package.json         # Dépendances npm et scripts
 └── README.md            # Documentation du projet
 ```
-```
