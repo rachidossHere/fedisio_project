@@ -1,7 +1,4 @@
-Voici un exemple de fichier `README.md` sans la partie sur les contributions :
-
-```markdown
-# MyProject
+# Fedisio projet
 
 Ce projet est un site web responsive utilisant HTML, SCSS pour les styles, Gulp pour l'automatisation des tâches, et JavaScript pour ajouter des fonctionnalités interactives.
 
